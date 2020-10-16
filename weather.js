@@ -6,14 +6,14 @@ function getWeather(lat, lon) {
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
   )
-    .then(function(response) {
+    .then(function (response) {
       //console.log(response.json());
       return response.json();
     })
-    .then(function(json) {
+    .then(function (json) {
       const temperature = json.main.temp;
       const place = json.name;
-      weather.innerText = `${temperature} @ ${place}`;
+      weather.innerText = `Temp ${temperature}℃ @ ${place}`;
       console.log(json);
     });
 }
@@ -33,7 +33,7 @@ function handleGeoSuccess(position) {
   //이름이 같을 경우 아래와 같이 쓸수있다.
   const coordsObj = {
     latitude,
-    longitude
+    longitude,
   };
   saveCoords(coordsObj);
   getWeather(latitude, longitude);
